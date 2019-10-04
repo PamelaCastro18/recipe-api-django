@@ -75,28 +75,28 @@ TEMPLATES = [
 WSGI_APPLICATION = 'app.wsgi.application'
 
 
+
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
-
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': 'mydatabase',
     }
-}
-
-'''
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'HOST': os.environ.get('127.0.0.1'),
-        'NAME': os.environ.get('mydb'),
-        'USER': os.environ.get('postgres'),
-        'PASSWORD': os.environ.get('secretpassword'),
-        #'BYPASS_CREATION':'yes',
-    }
 }'''
 
+
+DATABASES = {
+    'default': {
+        'ENGINE': os.environ.get('APP_DB_ENGINE', 'django.db.backends.postgresql'),
+        'HOST': os.environ.get('DB_HOST','127.0.0.1'),
+        'NAME': os.environ.get('DB_NAME', 'mydb'),    
+        'USER': os.environ.get('DB_USER','postgres'),
+        'PASSWORD': os.environ.get('DB_PASSWORD','secret'),
+        'BYPASS_CREATION':'yes',
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
