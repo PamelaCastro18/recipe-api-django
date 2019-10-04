@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
+
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -40,6 +41,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'core',
+    'user',
 ]
 
 MIDDLEWARE = [
@@ -78,6 +80,14 @@ WSGI_APPLICATION = 'app.wsgi.application'
 
 DATABASES = {
     'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'mydatabase',
+    }
+}
+
+'''
+DATABASES = {
+    'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'HOST': os.environ.get('127.0.0.1'),
         'NAME': os.environ.get('mydb'),
@@ -85,7 +95,7 @@ DATABASES = {
         'PASSWORD': os.environ.get('secretpassword'),
         #'BYPASS_CREATION':'yes',
     }
-}
+}'''
 
 
 # Password validation
